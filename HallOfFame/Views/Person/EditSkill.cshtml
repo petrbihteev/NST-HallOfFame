@@ -1,0 +1,22 @@
+﻿@model Skill
+@{
+    ViewData["Title"] = "Изменение навыка";
+}
+
+<form method="post" asp-action="EditSkill">
+    <div class="border p-3 mt-4">
+        <div class=row pb-2>
+            <h2 class="text-primary">Изменение навыка</h2>
+            <hr />
+        </div>
+        <div class=mb-3>
+            <label>Наименование</label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Обновить</button>
+        <a asp-controller="Person" asp-action="ViewSkill" class="btn btn-secondary" style="width:250px">
+            Вернуться к навыкам
+        </a>
+    </div>
+</form>

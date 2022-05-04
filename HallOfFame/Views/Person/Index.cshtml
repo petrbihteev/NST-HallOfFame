@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Person>
+@{
+    ViewData["Title"] = "Сотрудники";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class=col-6>
+            <h2 class="text-primary">Таблица сотрудников</h2>
+        </div>
+        <div class=col-6>
+            <a asp-controller="Person" asp-action="Create" data-toggle="modal" class="btn btn-primary">
+                Добавить нового сотрудника
+            </a>
+        </div>
+    </div>
+
+
+@if(Model.Count() > 0)
+     {
+        <table class="table table-bordered table-striped " style="width:100%"> 
+            <thead>
+                <tr>
+                    <th>
+                        Имя
+                    </th>
+                    <th>
+                        Отображаемое имя
+                    </th>
+                    <th>
+                        Навык
+                    </th>
+                    <th>
+                        Уровни навыка
+                    </th>
+                     <th>
+                        
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+               @foreach(var item in Model)
+               {
+                    <tr>
+                        <td width="25%">@item.Name</td>
+                        <td width="25%">@item.DisplayName</td>
+                        <td width="30%">
+                            @if(@item.ConPersonSkills.Count == 0)
+                            {
+                                <label>*Нет навыков!*</label>
+                            }
+                            else
+                            {
+                                @foreach(var skill in @item.ConPersonSkills)
+                                {
+                                    @skill.Skill.Name;<br />                     
+                                }
+                            }
+
+                        </td>
+                        <td width="25%">
+                             @foreach(var skill in @item.ConPersonSkills)
+                            {
+                                @skill.Level; <br />
+                            }
+                        </td>
+                        <td>
+                            <div class="w-75 btn-group" role="group">
+                                <a asp-controller="Person" asp-action="Edit" asp-route-id="@item.Id">
+                                Редактировать
+                                </a>
+                            </div>
+                            <div class="w-75 btn-group" role="group">
+                                <a asp-controller="Person" asp-action="Result" asp-route-id="@item.Id">
+                                Детали
+                                </a>
+                            </div>
+                             <div class="w-75 btn-group" role="group">
+                                <a asp-controller="Person" asp-action="Delete" asp-route-id="@item.Id">
+                                Удалить
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+               }
+            </tbody>
+        </table>
+     }
+     else
+     {
+        <p>Нет сотрудников!</p>
+     }
+</div>

@@ -1,0 +1,28 @@
+﻿@model Person
+@{
+    ViewData["Title"] = "Добавление сотрудника";
+}
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class=row pb-2>
+            <h2 class="text-primary">Добавление сотрудника</h2>
+            <hr />
+        </div>
+        <div class=mb-3>
+            <label>Наименование</label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class=mb-3>
+            <label>Отображаемое имя</label>
+            <input asp-for="DisplayName" class="form-control" />
+            <span asp-validation-for="DisplayName" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Добавить</button>
+        <a asp-controller="Person" asp-action="Index" class="btn btn-secondary" style="width:250px">
+            Вернуться к сотрудникам
+        </a>
+    </div>
+</form>
+

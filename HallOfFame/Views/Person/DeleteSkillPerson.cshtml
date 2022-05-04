@@ -1,0 +1,18 @@
+﻿@model ConPersonSkill
+@{
+    ViewData["Title"] = "Удаление навыка сотрудника";
+}
+
+<h1>Удаление</h1>
+<h3>Вы точно хотите удалить этот навык у сотрудника?</h3>
+<form method="post" asp-controller="Person" asp-action="DeleteSkillPerson">
+    <div class="border p-3 mt-4">
+        <div class="form-group">
+            <h3>"@Model.Skill.Name - @Model.Level"</h3>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Да</button>
+        <a asp-controller="Person" asp-action="Index" class="btn btn-secondary" style="width:250px">
+            Нет
+        </a>
+    </div>
+</form>

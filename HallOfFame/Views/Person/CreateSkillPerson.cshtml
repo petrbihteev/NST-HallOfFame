@@ -1,0 +1,32 @@
+﻿@model ConPersonSkill
+@{
+    ViewData["Title"] = "Добавление навыка для сотрудника";
+}
+
+<h1>Добавление навыка для сотрудника</h1>
+
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class=row pb-2>
+            <h2 class="text-primary">Добавление навыка</h2>
+            <hr />
+        </div>
+        <div class="form-group">
+            <label asp-for="Skill" class="control-label"></label>
+            <select asp-for="SkillId" class="form-control" asp-items="ViewBag.SkillId">
+                <option value="">-- Выберите навык --</option>
+            </select>
+            <span asp-validation-for="SkillId" class="text-danger" />
+        </div>
+        <div class=mb-3>
+            <label asp-for="Level"></label>
+            <input asp-for="Level" class="form-control" />
+            <span asp-validation-for="Level" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Добавить</button>
+        <a asp-controller="Person" asp-action="Index" class="btn btn-secondary" style="width:250px">
+            Вернуться к сотрудникам
+        </a>
+    </div>
+</form>
