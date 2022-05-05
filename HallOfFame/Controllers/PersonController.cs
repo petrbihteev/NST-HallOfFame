@@ -366,6 +366,10 @@ namespace HallOfFame.Controllers
                 {
                     return Unauthorized("Такой навык у работника уже есть!");
                 }
+                if (obj.Level > 10 || obj.Level < 1)
+                {
+                    return Unauthorized("Неправильно указан уровень!");
+                }
                 else
                 {
                     _db.ConPersonSkills.Add(obj);
@@ -413,6 +417,10 @@ namespace HallOfFame.Controllers
                 obj.IdPersonSkill = IdSkillPerson;
                 obj.PersonId = IdPerson;
                 obj.SkillId = IdSkill;
+                if (obj.Level > 10 || obj.Level < 1)
+                {
+                    return Unauthorized("Неправильно указан уровень!");
+                }
                 _db.ConPersonSkills.Update(obj);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
