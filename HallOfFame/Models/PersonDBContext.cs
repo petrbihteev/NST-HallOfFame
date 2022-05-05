@@ -41,13 +41,13 @@ namespace HallOfFame
                 entity.HasOne(d => d.Person)
                     .WithMany(p => p.ConPersonSkills)
                     .HasForeignKey(d => d.PersonId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK_ConPersonSkills_Persons");
 
                 entity.HasOne(d => d.Skill)
                     .WithMany(p => p.ConPersonSkills)
                     .HasForeignKey(d => d.SkillId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK_ConPersonSkills_Skills");
             });
 
