@@ -93,12 +93,14 @@ namespace HallOfFame.Migrations
                     b.HasOne("HallOfFame.Person", "Person")
                         .WithMany("ConPersonSkills")
                         .HasForeignKey("PersonId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("FK_ConPersonSkills_Persons");
 
                     b.HasOne("HallOfFame.Skill", "Skill")
                         .WithMany("ConPersonSkills")
                         .HasForeignKey("SkillId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("FK_ConPersonSkills_Skills");
 

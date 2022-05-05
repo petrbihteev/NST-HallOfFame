@@ -52,12 +52,14 @@ namespace HallOfFame.Migrations
                         name: "FK_ConPersonSkills_Persons",
                         column: x => x.PersonId,
                         principalTable: "Persons",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_ConPersonSkills_Skills",
                         column: x => x.SkillId,
                         principalTable: "Skills",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

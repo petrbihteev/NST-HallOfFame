@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HallOfFame.Migrations
 {
     [DbContext(typeof(PersonDBContext))]
-    [Migration("20220504092419_PersonSkillMigration")]
+    [Migration("20220505101249_PersonSkillMigration")]
     partial class PersonSkillMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -95,12 +95,14 @@ namespace HallOfFame.Migrations
                     b.HasOne("HallOfFame.Person", "Person")
                         .WithMany("ConPersonSkills")
                         .HasForeignKey("PersonId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("FK_ConPersonSkills_Persons");
 
                     b.HasOne("HallOfFame.Skill", "Skill")
                         .WithMany("ConPersonSkills")
                         .HasForeignKey("SkillId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("FK_ConPersonSkills_Skills");
 
